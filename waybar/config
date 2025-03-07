@@ -1,0 +1,88 @@
+{
+	"layer":"top",
+	"position":"top",
+	"reload_style_on_change":true,
+		
+	"height":20,
+	"margin-bottom":5,
+	"margin-left": 5,
+	"margin-right":5,
+	
+	"modules-left":["hyprland/workspaces"],
+	"modules-center":["clock"],
+	"modules-right":[
+		"custom/telegram",
+		"custom/notification",
+//		"network",
+		"backlight",
+		"wireplumber",
+		"clock#time",
+		"custom/power"
+	],
+		
+	"hyprland/workspaces": {
+	    "all-outputs": true,
+	    "format": "{icon}",
+	    "format-icons": {
+	        "1": "✨",
+	        "2": "🌈",
+	        "3": "🔥",
+	        "4": "⭐",
+	        "5": "🌙",
+	    },
+	    "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+	    "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+	    "sort-by-number": true,
+	    "active-only": false
+	},
+	
+	"wireplumber": {
+	    "on-click": "pavucontrol",
+	    "on-click-right": "amixer sset Master toggle 1>/dev/null",
+	    "format": "<span foreground='#e5c76b'>{icon}</span>  {volume}%",
+	    "format-muted": "<span foreground='#e5c76b'> </span>  Muted",
+	    "format-icons": {
+	        "headphone": " ",
+	        "hands-free": " ",
+	        "headset": " ",
+	        "phone": " ",
+	        "portable": " ",
+	        "car": " ",
+	        "default": [" ", " ", " "]
+	    },
+	},
+        
+//    "network": {
+//        "format-wifi": "<span color='#67b0e8'> </span>   {essid}  ",
+//        "format-ethernet": "<span color='#67b0e8'> </span>   {ifname}",
+//        "format-linked": "<span color='#67b0e8'> </span>  {ifname} (No IP)",
+//        "format": "<span color='#67b0e8'> </span>  Connected",
+//        "format-disconnected": "<span color='#67b0e8'>❌</span>  Disconnected",
+//        "interval": 60,
+//        "on-click":"~/.config/rofi/rofi-wifi-menu.sh"
+//    },
+	
+	"clock": {
+	    "format": "<span color='#ee5396'></span>  {:%A %e %B}"
+	},
+	
+	"clock#time": {
+	    "format": "<span color='#e57474'></span>  {:%H:%M}"
+	},
+	
+	"custom/power":{
+    	    "format":"",
+    	    "on-click":"~/.config/rofi/powermenu/powermenu.sh"
+	},
+ 
+	"custom/notification":{
+    	    "format": "󱅫",
+    	    "on-click": "swaync-client -t -sw"
+	},
+
+	"custom/telegram":{
+		"format": "",
+    		"on-click": "telegram-desktop",
+    		"tooltip": false
+	},
+}
