@@ -65,8 +65,8 @@ pacman -S grub efibootmgr os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 ```
 
-# При установке Linux рядом с Windows может возникнуть проблема, что диск, на который был установлен Linux, не будет отображаться в качестве загрузочного
-# Мне помогло следующее решение:
+При установке Linux рядом с Windows может возникнуть проблема, что диск, на который был установлен Linux, не будет отображаться в качестве загрузочного
+Мне помогло следующее решение:
 ```bash
 grub-install --efi-directory=/boot --removable
 grub-install --efi-directory=/boot --target=x86_64-efi --bootloader-id=arch --recheck
