@@ -1,6 +1,6 @@
 [general]
 import = [
-    "/home/Lilo/.config/alacritty/themes/gruvbox_material_soft_dark.toml"
+    "$HOME/.config/alacritty/themes/gruvbox_material_soft_dark.toml"
 ]
 
 [[keyboard.bindings]]
