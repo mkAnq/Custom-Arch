@@ -164,6 +164,12 @@ pacman -S udisks2 udiskie file-roller
 ```
 ---
 
+### Программы для просмотра изображений и документов
+```bash
+sudo pacman -S viewnior
+sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps
+```
+
 ### Установка кастомной темы для sddm
 ### Переместите папку sddm-astronaut-theme в дирректорию /usr/share/sddm/themes
 ### Выполните команду: 
