@@ -182,35 +182,6 @@
   border-radius: 6px;
 }
 
-  /* Buttons menu */
-.widget-buttons-grid {
-  font-size: x-large;
-  padding: 6px 2px;
-  margin: 6px;
-  border-radius: 12px;
-  background: @background-alt;
-  color: @text;
-}
-
-.widget-buttons-grid>flowbox>flowboxchild>button {
-  margin: 4px 10px;
-  padding: 6px 12px;
-  background: transparent;
-  border-radius: 8px;
-}
-
-.widget-buttons-grid>flowbox>flowboxchild>button:hover {
-  background: @hover;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-    background: @hover;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
-    color: @text-alt;
-}
-
 /* Music player */
 .widget-mpris {
     background: alpha(@selected, .2);
