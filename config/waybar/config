@@ -67,7 +67,7 @@
 	},
 	"custom/telegram":{
 		"format": "",
-    	"on-click": "telegram-desktop",
-    	"tooltip": false
+    		"on-click": "telegram-desktop",
+    		"tooltip": false
 	}
 }
