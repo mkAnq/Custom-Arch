@@ -1,14 +1,14 @@
 # Arhc Installation Guide + Basic Setup
 
-# Подключаем к компьютеру флешку с  загруженным образом Arch, важно проверить подключение к сети ( ping -c 4 google.com ), узнать на какой диск будет ставится Arch ( fdisk -l ) - в моем случае это /dev/sdc
+### Подключаем к компьютеру флешку с  загруженным образом Arch, важно проверить подключение к сети ( ping -c 4 google.com ), узнать на какой диск будет ставится Arch ( fdisk -l ) - в моем случае это /dev/sdc
 
-# Форматирование разделов
+### Форматирование разделов
 ```bash 
 mkfs.ext4 /dev/sdc2
 mkfs.fat -F32 /dev/sdc1
 ```
 
-# Монтирование разделов
+### Монтирование разделов
 ```bash
 mount /dev/sdc2 /mnt
 mount --mkdir /dev/sdc1 /mnt/boot
@@ -19,12 +19,12 @@ mount --mkdir /dev/sdc1 /mnt/boot
 pacstrap /mnt base linux linux-firmware nano networkmanager
 ```
 
-Генерация fstab:
+### Генерация fstab:
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-Переход в систему:
+### Переход в систему:
 ```bash
 arch-chroot /mnt
 ```
@@ -37,18 +37,18 @@ hwclock --systohc
 
 ```
 
-Настройка локалей (`/etc/locale.gen`):
+### Настройка локалей (`/etc/locale.gen`):
 ```bash
 nano /etc/localegen
 locale-gen
 ```
 
-Добавьте в `/etc/locale.conf`:
+### Добавьте в `/etc/locale.conf`:
 ```bash
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
 
-Настройка /etc/hosts
+### Настройка /etc/hosts
 ```bash
 127.0.0.1    localhost
 ::1          localhost
@@ -60,25 +60,25 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 pacman -S grub efibootmgr os-prober
 ```
 
-Установите GRUB:
+### Установите GRUB:
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 ```
 
-При установке Linux рядом с Windows может возникнуть проблема, что диск, на который был установлен Linux, не будет отображаться в качестве загрузочного
-Мне помогло следующее решение:
+### При установке Linux рядом с Windows может возникнуть проблема, что диск, на который был установлен Linux, не будет отображаться в качестве загрузочного
+### Мне помогло следующее решение:
 ```bash
 grub-install --efi-directory=/boot --removable
 grub-install --efi-directory=/boot --target=x86_64-efi --bootloader-id=arch --recheck
 ```
 
-Включите поддержку Windows в GRUB:
+### Включите поддержку Windows в GRUB:
 ```bash
 echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 os-prober
 ```
 
-Сгенерируйте конфиг:
+### Сгенерируйте конфиг:
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -88,7 +88,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 ```
 
-Установите пароль для root:
+### Установите пароль для root:
 ```bash
 passwd
 ```
@@ -99,13 +99,13 @@ useradd -m -G wheel -s /bin/bash myuser
 passwd myuser
 ```
 
-Разрешите пользователям группы `wheel` использовать sudo:
+### Разрешите пользователям группы `wheel` использовать sudo:
 ```bash
 pacman -S sudo
 nano /etc/sudoers # Раскомментируйте строку "%wheel ALL=(ALL:ALL) ALL"
 ```
 
-Перезагрузите систему:
+### Перезагрузите систему:
 ```bash
 exit
 umount -R /mnt
@@ -113,7 +113,7 @@ reboot
 ```
 
 ---
-## Настройка окружения Hyprland
+### Настройка окружения Hyprland
 ### Установка Hyprland и связанных компонентов
 ```bash
 pacman -S hyprland waybar rofi alacritty thunar polkit-gnome \
@@ -147,12 +147,12 @@ pacman -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg # Если не
 systemctl enable sddm
 ```
 
-Для настройки темы SDDM:
+### Для настройки темы SDDM:
 ```bash
 nano /etc/sddm.conf.d/theme.conf
 ```
 
-Добавьте:
+### Добавьте:
 ```ini
 [Theme]
 Current="Выбранная тема"
@@ -162,17 +162,14 @@ Current="Выбранная тема"
 ```bash
 pacman -S udisks2 udiskie file-roller
 ```
-
-Перезагрузитесь и войдите в Hyprland!
-
 ---
 
-# Установка кастомной темы для sddm
+### Установка кастомной темы для sddm
 ### Переместите папку sddm-astronaut-theme в дирректорию /usr/share/sddm/themes
 ### Выполните команду: 
 ```bash echo "[Theme]
 Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
 ```
 
-# Установка конфигов для Hyprland, rofi, waybar, alacritty
+### Установка конфигов для Hyprland, rofi, waybar, alacritty
 ### Переместите соответствующие папки в дирректорию ~/.config
