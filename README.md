@@ -55,6 +55,12 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 127.0.0.1    archlinux.localdomain    archlinux
 ```
 
+### Настройка /etc/vconsole.conf
+```bash
+KEYMAP=ru
+FONT=cyr-sun16
+```
+
 ### Установка загрузчика
 ```bash
 pacman -S grub efibootmgr os-prober
