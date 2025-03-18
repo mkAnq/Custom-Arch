@@ -1,134 +1,45 @@
-@import "themes/theme.css";
-
-
-* {
-    font-size: 12px;
-    font-family: GeistMono Nerd Font Propo;
-    font-weight: bold;
+*{
+    font-size: 13px;
+    font-family: "IBM Plex Sans Medium";
+    color: #dadada;
 }
 
-window#waybar{
-    all:unset;
+#waybar {
+  background: transparent;
+  border-radius: 5px;
 }
 
-.modules-left {
-    padding: 7px;
-    margin: 10px 0px 5px 10px;
-    border-radius: 10px;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+#workspaces{
+  border-radius:5px;
+  box-shadow:0px 0px black;
 }
 
-.modules-center {
-    padding: 7px;
-    margin: 10px 0px 5px 0px;
-    border-radius: 10px;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+#workspaces,
+#network,
+#wireplumber,
+#clock,
+#custom-notification,
+#custom-telegram{
+  margin-left:5px;
+  margin-right: 5px;
+  background: #141b1e;
+  border-radius:5px 0px 0px 5px;
+  padding-left:10px;
+  padding-right: 10px;
 }
 
-.modules-right {
-    padding:7px;
-    margin: 10px 10px 5px 0px;
-    border-radius: 10px;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+#network,
+#wireplumber{
+  margin:0px;
 }
 
-tooltip {
-    background: @background;
-    border: 2px solid @primary;
-    border-radius: 12px;
+#wireplumber{
+  border-radius: 0px 5px 5px 0px;
 }
 
-tooltip-label {
-    color: @on_surface;
-    padding: 5px;
-}
-
-#clock:hover,#custom-notification:hover,#cpu:hover,#memory:hover,#temperature:hover,#custom-telegram:hover{
-    transition: all .3s ease;
-    color: @tertiary;
-}
-
-#custom-notification, #custom-telegram {
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: @on_surface;
-}
-
-#clock{
-    padding: 0px 5px;
-    color: @on_surface;
-    transition: all .3s ease;
-}
-
-#workspaces {
-    padding: 0px 5px;
-}
-
-#workspaces button {
-    all:unset;
-    padding: 0px 5px;
-    color: alpha(@primary,.4);
-    transition: all .2s ease;
-}
-
-#workspaces button:hover {
-    color:rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
-}
-
-#workspaces button.active {
-    color: @primary;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-
-#workspaces button.empty {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
-}
-
-#workspaces button.empty:hover {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
-}
-
-#workspaces button.empty.active {
-    color: @on_surface;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-
-#group-expand{
-    padding: 0px 5px;
-    transition: all .3s ease; 
-}
-
-#cpu,#memory,#temperature{
-    padding: 0px 5px;
-    transition: all .3s ease; 
-    color: @on_surface;
-
-}
-
-#tray{
-    padding: 0px 5px;
-    transition: all .3s ease; 
-
-}
-#tray menu * {
-    padding: 0px 5px;
-    transition: all .3s ease; 
-}
-
-#tray menu separator {
-    padding: 0px 5px;
-    transition: all .3s ease; 
+#clock,
+#workspaces,
+#custom-notification,
+#custom-telegram{
+  border-radius: 5px;
 }
