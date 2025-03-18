@@ -1,73 +1,78 @@
 {
-	"layer": "top",
-	"position": "top",
-	"reload_style_on_change": true,
-	"modules-left": ["clock"],
-	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["group/expand", "cuctom/telegram", "custom/notification"],
-
+	"layer":"top",
+	"position":"bottom",
+	"reload_style_on_change":true,
+		
+	"height":20,
+	"margin-bottom":5,
+	"margin-left": 5,
+	"margin-right":5,
+	
+	"modules-left":["hyprland/workspaces"],
+	"modules-center":["clock"],
+	"modules-right":[
+		"custom/notification",
+		"network",
+		"wireplumber",
+		"clock#time",
+		"custom/telegram"
+	],
 	"hyprland/workspaces": {
-		"format": "{icon}",
+	    "all-outputs": true,
+	    "format": "{icon}",
+	    "format-icons": {
+	        "1": "✨",
+	        "2": "🌈",
+	        "3": "💕",
+	        "4": "🎄",
+	        "5": "🌊",
+	        "6": "🌷",
+	        "7": "🪷",
+	        "8": "😽",
+	        "9": "🌙",
+	        "10": "🦋"
+	    },
+	    "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+	    "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+	    "sort-by-number": true,
+	    "active-only": false
+    },
+	"wireplumber": {
+		"on-click": "pavucontrol",
+		"on-click-right": "amixer sset Master toggle 1>/dev/null",
+		"format": "<span foreground='#e5c76b'>{icon}</span>  {volume}%",
+		"format-muted": "<span foreground='#e5c76b'></span>  Muted",
 		"format-icons": {
-			"active": "",
-			"default": "",
-			"empty": ""
-		},
-		"persistent-workspaces": {
-			"*": [ 1,2,3,4,5 ]
+		    "headphone": " ",
+		    "hands-free": " ",
+		    "headset": " ",
+		    "phone": " ",
+		    "portable": " ",
+		    "car": " ",
+		    "default": [" ", " ", " "]
 		}
 	},
-	"custom/notification": {
-		"tooltip": false,
-		"format": "",
-		"on-click": "swaync-client -t -sw",
-		"escape": true
-	},
+    "network": {
+        "format-wifi": "<span color='#67b0e8'></span>   {essid}  ",
+        "format-ethernet": "<span color='#67b0e8'></span>   {ifname}",
+        "format-linked": "<span color='#67b0e8'></span>  {ifname} (No IP)",
+        "format": "<span color='#67b0e8'></span>  Connected",
+        "format-disconnected": "<span color='#67b0e8'></span>  Disconnected",
+        "interval": 60
+    },
 	"clock": {
-		"format": "{:%I:%M:%S %p} ",
-		"interval": 1,   
-		"tooltip-format": "<tt>{calendar}</tt>",
-		"calendar": {
-			"format": {
-				"today": "<span color='#fAfBfC'><b>{}</b></span>"
-			}
-		},
-		"actions": {
-			"on-click-right": "shift_down",
-			"on-click": "shift_up"
-		}
+		"format": "<span color='#ee5396'></span>  {:%A %e %B}"
 	},
-	"custom/endpoint":{
-		"format": "|",
-		"tooltip": false
+	"clock#time": {
+		"format": "<span color='#e57474'></span>  {:%H:%M}"
 	},
-	"group/expand": {
-		"orientation": "horizontal",
-		"drawer": {
-			"transition-duration": 600,
-			"transition-to-left": true,
-			"click-to-reveal": true
-		},
-		"modules": ["cpu","memory","temperature","custom/endpoint"]
-	},
-	"cpu": {
-		"format": "󰻠",
-		"tooltip": true
-	},
-	"memory": {
-		"format": ""
-	},
-	"temperature": {
-		"critical-threshold": 80,
-		"format": ""
-	},
-	"tray": {
-		"icon-size": 14,
-		"spacing": 10
-	},
+	"custom/notification":{
+    	"format": "󱅫",
+    	"on-click": "swaync-client -t -sw"
+    },
 	"custom/telegram":{
 		"format": "",
-    		"on-click": "telegram-desktop",
-    		"tooltip": false
+    	"on-click": "telegram-desktop",
+    	"tooltip": false
 	}
 }
